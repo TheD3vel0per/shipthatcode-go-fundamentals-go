@@ -1,24 +1,24 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"strconv"
-	"strings"
-)
+import "fmt"
 
 func main() {
-	r := bufio.NewReader(os.Stdin)
-	name, _ := r.ReadString('\n')
-	name = strings.TrimRight(name, "\r\n")
-	qtyLine, _ := r.ReadString('\n')
-	qty, _ := strconv.Atoi(strings.TrimSpace(qtyLine))
-	priceLine, _ := r.ReadString('\n')
-	price, _ := strconv.ParseFloat(strings.TrimSpace(priceLine), 64)
-	total := float64(qty) * price
+	var n int
+	fmt.Scan(&n)
+	mustPrintNum := true
 
-	// TODO: replace this Println with one fmt.Printf that lays the
-	// four values out in the receipt columns described in the exercise.
-	fmt.Printf("%-12s %3d x %6.2f = %8.2f\n", name, qty, price, total)
+	// TODO: choose the right label for n instead of always printing it.
+	if n%3 == 0 {
+		fmt.Print("Fizz")
+		mustPrintNum = false
+	}
+
+	if n%5 == 0 {
+		fmt.Print("Buzz")
+		mustPrintNum = false
+	}
+
+	if mustPrintNum {
+		fmt.Printf("%d", n)
+	}
 }
