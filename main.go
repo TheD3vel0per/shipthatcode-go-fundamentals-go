@@ -5,20 +5,12 @@ import "fmt"
 func main() {
 	var n int
 	fmt.Scan(&n)
-	mustPrintNum := true
+	// TODO: accumulate the sum of 1..n with a loop, and print that instead of the placeholder.
 
-	// TODO: choose the right label for n instead of always printing it.
-	if n%3 == 0 {
-		fmt.Print("Fizz")
-		mustPrintNum = false
+	acc := 0
+	for i := 1; i <= n; i++ {
+		acc = acc + i
 	}
 
-	if n%5 == 0 {
-		fmt.Print("Buzz")
-		mustPrintNum = false
-	}
-
-	if mustPrintNum {
-		fmt.Printf("%d", n)
-	}
+	fmt.Printf("%d\n", acc)
 }
